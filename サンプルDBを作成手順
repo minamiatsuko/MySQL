@@ -1,0 +1,42 @@
+MySQL
+
+MySQLにログインしてサンプルDBを作成。
+
+mysql> create database sample_db;
+mysql> show databases; 
+
+mysql> grand all on sample_db.* to test@localhost identified by 'testpass'
+エラー：
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'identified by 'testpass'' at line 1
+
+
+
+
+
+
+MySQLのバージョン確認
+mysql> select version();
++-----------+
+| version() |
++-----------+
+| 8.0.20    |
++-----------+
+1 row in set (0.07 sec)
+
+
+今存在するユーザー名の確認
+mysql> SELECT user, host FROM mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| root             | localhost |
++------------------+-----------+
+4 rows in set (0.13 sec)
+
+
+
+mysql> CREATE USER 'test_user' IDENTIFIED BY 'testpass';
+
